@@ -53,7 +53,7 @@ public class FuncionarioDAO extends ExecuteSQL{
             if(rs != null){
                 while(rs.next()){
                     Funcionario a = new Funcionario();
-                    a.setPatente(rs.getInt(10));
+                    a.setPatente(rs.getInt(1));
                     lista.add(a);
                 }
                 return lista;
