@@ -9,6 +9,8 @@ import Modelo.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -40,4 +42,26 @@ public class FuncionarioDAO extends ExecuteSQL{
     }
     return finalResult;
   }
+    
+   public List<Funcionario> VerificaPatente(String senha, String login){
+        String sql = "SELECT patente FROM funcionario where login = "+login+" and senha = "+senha;
+        List<Funcionario> lista = new ArrayList<>();
+        try{
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs != null){
+                while(rs.next()){
+                    Funcionario a = new Funcionario();
+                    a.setPatente(rs.getInt(10));
+                    lista.add(a);
+                }
+                return lista;
+            }else{
+                return null;
+            }
+        }catch(Exception ex){
+            return null;
+        }
+    }
 }
