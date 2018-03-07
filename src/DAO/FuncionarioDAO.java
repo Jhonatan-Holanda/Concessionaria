@@ -53,7 +53,7 @@ public class FuncionarioDAO extends ExecuteSQL{
         boolean finalResult = false;
     
     try{
-        String consulta = "select login, senha, patente from funcionario where login = '"+login+"' and senha ='"+senha+"'";
+        String consulta = "select login, senha from funcionario where login = '"+login+"' and senha ='"+senha+"' and patente = 0";
         PreparedStatement ps = getCon().prepareStatement(consulta);
         ResultSet rs = ps.executeQuery();
         
@@ -62,7 +62,6 @@ public class FuncionarioDAO extends ExecuteSQL{
                 Funcionario a = new Funcionario();
                 a.setLogin(rs.getString(1));
                 a.setSenha(rs.getString(2));
-                a.setPatente(rs.getInt(3));
                 finalResult = true;
             }
         }
@@ -70,26 +69,24 @@ public class FuncionarioDAO extends ExecuteSQL{
     }
     return finalResult;
   }
+  public boolean Logar_gerente(String login, String senha){
+        boolean finalResult = false;
     
-   public List<Funcionario> VerificaPatente(String senha, String login){
-        String sql = "SELECT patente FROM funcionario where login = "+login+" and senha = "+senha;
-        List<Funcionario> lista = new ArrayList<>();
-        try{
-            PreparedStatement ps = getCon().prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            
-            if(rs != null){
-                while(rs.next()){
-                    Funcionario a = new Funcionario();
-                    a.setPatente(rs.getInt(1));
-                    lista.add(a);
-                }
-                return lista;
-            }else{
-                return null;
+    try{
+        String consulta = "select login, senha from funcionario where login = '"+login+"' and senha ='"+senha+"' and patente = 1";
+        PreparedStatement ps = getCon().prepareStatement(consulta);
+        ResultSet rs = ps.executeQuery();
+        
+        if(rs != null){
+            while(rs.next()){
+                Funcionario a = new Funcionario();
+                a.setLogin(rs.getString(1));
+                a.setSenha(rs.getString(2));
+                finalResult = true;
             }
-        }catch(Exception ex){
-            return null;
         }
+    }catch(Exception e){
     }
+    return finalResult;
+  }
 }
