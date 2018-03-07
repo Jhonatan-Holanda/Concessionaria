@@ -38,14 +38,16 @@ public class CadastrarPromocao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(9, 51, 65));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cadastrar Promoção");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 590, 80);
+        jLabel1.setBounds(0, 0, 590, 90);
 
+        jPanel2.setBackground(new java.awt.Color(14, 82, 95));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(null);
 
@@ -74,6 +76,11 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jPanel2.setBounds(0, 90, 590, 180);
 
         jButton1.setText("Cancelar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
         jButton1.setBounds(430, 290, 100, 40);
 
@@ -136,6 +143,10 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         }
             
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

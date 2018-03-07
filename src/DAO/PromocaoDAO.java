@@ -28,7 +28,8 @@ public class PromocaoDAO extends ExecuteSQL{
             }
         } catch (Exception e) {
         return null;
-        }
-    
+        }    
     }
+    
+   
 }
