@@ -44,6 +44,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(9, 51, 65));
         jPanel1.setLayout(null);
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
@@ -53,7 +54,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 710, 90);
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(14, 82, 95));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(null);
 
@@ -137,6 +138,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 90, 710, 260);
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +148,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(530, 380, 100, 40);
 
+        jButton2.setBackground(new java.awt.Color(0, 255, 0));
         jButton2.setText("Cadastrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,6 +158,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(100, 380, 100, 40);
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 51));
         jButton3.setText("Limpar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -194,10 +198,10 @@ public class CadastrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String nome = jTextField1.getText();
-        String email = jTextField2.getText();
-        String cidade = jTextField3.getText();
-        String estado = jTextField4.getText();
+        String nome = jTextField1.getText().toUpperCase();
+        String email = jTextField2.getText().toUpperCase();
+        String cidade = jTextField3.getText().toUpperCase();
+        String estado = jTextField4.getText().toUpperCase();
         String RG = jFormattedTextField1.getText();
         String CPF = jFormattedTextField2.getText();
         String Telefone = jFormattedTextField3.getText();
