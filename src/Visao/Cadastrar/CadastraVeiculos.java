@@ -11,6 +11,8 @@ import DAO.VeiculoDAO;
 import Modelo.Fabricante;
 import Modelo.Veiculos;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -191,13 +193,13 @@ public class CadastraVeiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String modelo = jTextField1.getText();
+        String modelo = jTextField1.getText().toUpperCase();
         String fabricante = jComboBox1.getSelectedItem().toString();
-        String cor = jTextField3.getText();
+        String cor = jTextField3.getText().toUpperCase();
         String ano = jTextField4.getText();
         String preco = jTextField5.getText();
-        String chassi = jTextField6.getText();
-
+        String chassi = jTextField6.getText().toUpperCase();
+        
         if (modelo.equals("")||fabricante.equals("")||cor.equals("")||ano.equals("")||preco.equals("")||chassi.equals("")){
             JOptionPane.showMessageDialog(null,"Todos os campos devem ser preenchidos","Concessionaria",JOptionPane.WARNING_MESSAGE);
         }else{
