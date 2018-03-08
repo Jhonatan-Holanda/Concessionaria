@@ -9,18 +9,46 @@ import Modelo.Funcionario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Jhonatan Holanda
+ * 
  */
 public class FuncionarioDAO extends ExecuteSQL{
     
     public FuncionarioDAO(Connection con) {
         super(con);
     }
+    public String SalvarFuncionario(Funcionario c){
+        String sql = "INSERT INTO funcionario VALUES (0,?,?,?,?,?,?,?,?,?)";
+       try{
+       PreparedStatement ps = getCon().prepareStatement(sql);
+            ps.setString(1,c.getNome());
+            ps.setString(2,c.getEmail());
+            ps.setString(3,c.getCpf());
+            ps.setString(4,c.getTelefone());
+            ps.setString(5,c.getRg());
+            ps.setInt(6,c.getNumeropis());
+            ps.setString(7,c.getLogin());
+            ps.setString(8,c.getSenha());
+            ps.setInt(9,c.getPatente());
+            if (ps.executeUpdate()>0) {
+                return "Cadastro salvo com sucesso";
+            }else{
+                return "Erro Ao Salvar o cadastro";
+            }
+           
+       }catch (SQLException ex){
+           return ex.getMessage();
+    }
+    }
+    
+    
+    
     public boolean Logar(String login, String senha){
         boolean finalResult = false;
     

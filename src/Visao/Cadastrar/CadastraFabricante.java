@@ -9,38 +9,22 @@ import DAO.Conexao;
 import DAO.FabricanteDAO;
 import DAO.VeiculoDAO;
 import Modelo.Fabricante;
-import Modelo.Veiculos;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Jhonatan Holanda
  */
-public class CadastraVeiculos extends javax.swing.JFrame {
+public class CadastraFabricante extends javax.swing.JFrame {
 
     /**
-     * Creates new form CadastraVeiculos
+     * Creates new form CadastraFabricante
      */
-    public CadastraVeiculos() {
+    public CadastraFabricante() {
         initComponents();
-        AtualizarCombo();
     }
 
-    public void AtualizarCombo(){
-        Connection con = Conexao.AbrirConexao();
-        FabricanteDAO sql = new FabricanteDAO(con);
-        List<Fabricante> lista = new ArrayList<>();
-        lista = sql.ListarComboFabricante();
-        
-        for(Fabricante b : lista){
-            jComboBox1.addItem(b.getNome());
-        }
-        Conexao.FecharConexao(con);
-    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,16 +38,6 @@ public class CadastraVeiculos extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -79,56 +53,14 @@ public class CadastraVeiculos extends javax.swing.JFrame {
         jPanel2.setLayout(null);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Modelo:");
+        jLabel2.setText("Nome:");
         jPanel2.add(jLabel2);
         jLabel2.setBounds(80, 40, 60, 30);
         jPanel2.add(jTextField1);
         jTextField1.setBounds(150, 40, 250, 30);
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Fabricante:");
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(80, 80, 70, 30);
-
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Preço:");
-        jPanel2.add(jLabel4);
-        jLabel4.setBounds(80, 200, 50, 30);
-
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Chassi:");
-        jPanel2.add(jLabel5);
-        jLabel5.setBounds(80, 240, 60, 30);
-        jPanel2.add(jTextField3);
-        jTextField3.setBounds(150, 120, 250, 30);
-
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Cor:");
-        jPanel2.add(jLabel7);
-        jLabel7.setBounds(80, 120, 60, 30);
-
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Ano:");
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(80, 160, 60, 30);
-        jPanel2.add(jTextField4);
-        jTextField4.setBounds(150, 160, 250, 30);
-        jPanel2.add(jTextField5);
-        jTextField5.setBounds(150, 200, 250, 30);
-        jPanel2.add(jTextField6);
-        jTextField6.setBounds(150, 240, 250, 30);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Fabricante" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(150, 80, 250, 30);
-
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 90, 500, 330);
+        jPanel2.setBounds(0, 90, 500, 110);
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setText("Cancelar");
@@ -138,7 +70,7 @@ public class CadastraVeiculos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(370, 440, 100, 40);
+        jButton1.setBounds(370, 220, 100, 40);
 
         jButton2.setBackground(new java.awt.Color(0, 255, 0));
         jButton2.setText("Cadastrar");
@@ -148,7 +80,7 @@ public class CadastraVeiculos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(40, 440, 100, 40);
+        jButton2.setBounds(40, 220, 100, 40);
 
         jButton3.setBackground(new java.awt.Color(255, 255, 51));
         jButton3.setText("Limpar");
@@ -158,7 +90,7 @@ public class CadastraVeiculos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(210, 440, 100, 40);
+        jButton3.setBounds(210, 220, 100, 40);
 
         jLabel1.setBackground(new java.awt.Color(9, 51, 65));
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
@@ -172,15 +104,13 @@ public class CadastraVeiculos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -191,50 +121,26 @@ public class CadastraVeiculos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        String modelo = jTextField1.getText();
-        String fabricante = jComboBox1.getSelectedItem().toString();
-        String cor = jTextField3.getText();
-        String ano = jTextField4.getText();
-        String preco = jTextField5.getText();
-        String chassi = jTextField6.getText();
+        String nome = jTextField1.getText().toUpperCase();
 
-        if (modelo.equals("")||fabricante.equals("")||cor.equals("")||ano.equals("")||preco.equals("")||chassi.equals("")){
+        if (nome.equals("")){
             JOptionPane.showMessageDialog(null,"Todos os campos devem ser preenchidos","Concessionaria",JOptionPane.WARNING_MESSAGE);
         }else{
             Connection con = Conexao.AbrirConexao();
-            VeiculoDAO sql = new VeiculoDAO(con);
-            int anoo = Integer.parseInt(ano);
-            Veiculos v = new Veiculos();
-            v.setModelo(modelo);
-            v.setFabricante(fabricante);
-            v.setCor(cor);
-            v.setAno(anoo);
-            v.setPreço(preco);
-            v.setChassi(chassi);
-            
-            sql.Inserir_Veiculos(v);
+            FabricanteDAO sql = new FabricanteDAO(con);
+            Fabricante v = new Fabricante();
+            v.setNome(nome);
+
+            sql.Inserir_Fabricante(v);
             jTextField1.setText("");
-            jTextField3.setText("");
-            jTextField4.setText("");
-            jTextField5.setText("");
-            jTextField6.setText(""); 
             JOptionPane.showMessageDialog(null,"Cadastrado com sucesso");
             Conexao.FecharConexao(con);
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jTextField1.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jTextField6.setText(""); 
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,20 +159,20 @@ public class CadastraVeiculos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastraVeiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraFabricante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastraVeiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraFabricante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastraVeiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraFabricante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastraVeiculos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastraFabricante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastraVeiculos().setVisible(true);
+                new CadastraFabricante().setVisible(true);
             }
         });
     }
@@ -275,20 +181,10 @@ public class CadastraVeiculos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 }

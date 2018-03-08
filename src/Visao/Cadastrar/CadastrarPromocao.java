@@ -30,8 +30,8 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -65,12 +65,12 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jLabel3.setBounds(50, 70, 80, 30);
         jPanel2.add(jTextField1);
         jTextField1.setBounds(130, 70, 40, 30);
-        jPanel2.add(jDateChooser1);
-        jDateChooser1.setBounds(130, 130, 140, 30);
 
         jLabel4.setText("Data Termino:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(50, 130, 80, 30);
+        jPanel2.add(jDateChooser1);
+        jDateChooser1.setBounds(130, 130, 170, 30);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 90, 590, 180);
