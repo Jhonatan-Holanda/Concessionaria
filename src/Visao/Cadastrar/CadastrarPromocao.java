@@ -31,12 +31,14 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(9, 51, 65));
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
@@ -45,6 +47,7 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 590, 80);
 
+        jPanel2.setBackground(new java.awt.Color(14, 82, 95));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel2.setLayout(null);
 
@@ -66,14 +69,18 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jLabel4.setText("Data Termino:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(50, 130, 80, 30);
+        jPanel2.add(jDateChooser1);
+        jDateChooser1.setBounds(130, 130, 140, 30);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 90, 590, 180);
 
+        jButton1.setBackground(new java.awt.Color(204, 0, 0));
         jButton1.setText("Cancelar");
         jPanel1.add(jButton1);
         jButton1.setBounds(430, 290, 100, 40);
 
+        jButton2.setBackground(new java.awt.Color(0, 204, 0));
         jButton2.setText("Cadastrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +90,7 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(60, 290, 100, 40);
 
+        jButton3.setBackground(new java.awt.Color(204, 204, 0));
         jButton3.setText("Limpar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +182,7 @@ public class CadastrarPromocao extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
