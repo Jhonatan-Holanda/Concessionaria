@@ -8,6 +8,9 @@ package DAO;
 import Modelo.Veiculos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -44,5 +47,46 @@ public class VeiculoDAO extends ExecuteSQL{
         }
     }
     
+    //Excluir
+    public String Excluir_Veiculo(Veiculos a ){
+        
+        String sql = "DELETE FROM veiculos WHERE modelo = ?";
+        
+        try{
+           PreparedStatement ps = getCon().prepareStatement(sql);
+            ps.setString(1, a.getModelo());
+            if(ps.executeUpdate() > 0){
+                return "Excluído com sucesso";
+            }else{
+                return "Erro ao Excluir";
+            }
+        }catch(Exception ex){
+                return ex.getMessage();
+        }
+    }
+  
+  public List<Veiculos> ListarComboVeiculo(){
+        String sql = "SELECT modelo FROM veiculos order by modelo";
+        List<Veiculos> lista = new ArrayList<>();
+        try{
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs != null){
+                while(rs.next()){
+                    Veiculos a = new Veiculos();
+                    a.setModelo(rs.getString(1));
+                    lista.add(a);
+                }
+                return lista;
+            }else{
+                return null;
+            }
+            
+        }catch(Exception ex){
+            return null;
+            
+        }
     
+    }
 }

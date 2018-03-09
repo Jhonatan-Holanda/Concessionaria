@@ -89,4 +89,47 @@ public class FuncionarioDAO extends ExecuteSQL{
     }
     return finalResult;
   }
+  
+  public String Excluir_Funcionario(Funcionario a ){
+        
+        String sql = "DELETE FROM funcionario WHERE nome = ?";
+        
+        try{
+           PreparedStatement ps = getCon().prepareStatement(sql);
+            ps.setString(1, a.getNome());
+            if(ps.executeUpdate() > 0){
+                return "Excluído com sucesso";
+            }else{
+                return "Erro ao Excluir";
+            }
+        }catch(Exception ex){
+                return ex.getMessage();
+        }
+    }
+  
+  public List<Funcionario> ListarComboFuncionario(){
+        String sql = "SELECT nome FROM funcionario order by nome";
+        List<Funcionario> lista = new ArrayList<>();
+        try{
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs != null){
+                while(rs.next()){
+                    Funcionario a = new Funcionario();
+                    a.setNome(rs.getString(1));
+                    lista.add(a);
+                }
+                return lista;
+            }else{
+                return null;
+            }
+            
+        }catch(Exception ex){
+            return null;
+            
+        }
+    
+    }
+    
 }

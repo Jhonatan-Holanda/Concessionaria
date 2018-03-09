@@ -9,6 +9,7 @@ import Modelo.Fabricante;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,5 +93,21 @@ public class FabricanteDAO extends ExecuteSQL{
         }
     
     }
-    
+    //Excluir
+    public String Excluir_Fabricante(Fabricante a){
+            String sql = "DELETE FROM fabricante WHERE nome = ?";
+        try{
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ps.setString(1,a.getNome());
+   
+            if(ps.executeUpdate() > 0){
+                return "Excluido com Sucesso";
+            }else{
+                return "Erro ao Excluir";
+            }
+            
+        }catch( SQLException e){
+            return e.getMessage();
+        }
+    }
 }
