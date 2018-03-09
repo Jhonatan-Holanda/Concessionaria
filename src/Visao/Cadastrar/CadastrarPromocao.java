@@ -90,11 +90,16 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jPanel2.add(jLabel4);
         jLabel4.setBounds(50, 130, 80, 30);
         jPanel2.add(jDateChooser1);
+<<<<<<< HEAD
+        jDateChooser1.setBounds(130, 130, 140, 30);
+=======
         jDateChooser1.setBounds(130, 130, 150, 30);
+>>>>>>> origin/master
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 90, 590, 180);
 
+        jButton1.setBackground(new java.awt.Color(204, 0, 0));
         jButton1.setText("Cancelar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +109,7 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(430, 290, 100, 40);
 
+        jButton2.setBackground(new java.awt.Color(0, 204, 0));
         jButton2.setText("Cadastrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +119,7 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(60, 290, 100, 40);
 
+        jButton3.setBackground(new java.awt.Color(204, 204, 0));
         jButton3.setText("Limpar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
