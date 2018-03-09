@@ -61,7 +61,7 @@ public class CadastrarPromocao extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cadastrar Promoção");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 590, 90);
+        jLabel1.setBounds(0, 0, 560, 90);
 
         jPanel2.setBackground(new java.awt.Color(14, 82, 95));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());

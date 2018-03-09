@@ -135,6 +135,7 @@ public class CadastraFabricante extends javax.swing.JFrame {
             jTextField1.setText("");
             JOptionPane.showMessageDialog(null,"Cadastrado com sucesso");
             Conexao.FecharConexao(con);
+            dispose();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
