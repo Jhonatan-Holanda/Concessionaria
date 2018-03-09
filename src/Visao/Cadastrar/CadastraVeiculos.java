@@ -216,18 +216,21 @@ public class CadastraVeiculos extends javax.swing.JFrame {
             
             sql.Inserir_Veiculos(v);
             jTextField1.setText("");
+            jComboBox1.setSelectedIndex(0);
             jTextField3.setText("");
             jTextField4.setText("");
             jTextField5.setText("");
             jTextField6.setText(""); 
             JOptionPane.showMessageDialog(null,"Cadastrado com sucesso");
             Conexao.FecharConexao(con);
+            dispose();
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jTextField1.setText("");
+        jComboBox1.setSelectedIndex(0);
         jTextField3.setText("");
         jTextField4.setText("");
         jTextField5.setText("");

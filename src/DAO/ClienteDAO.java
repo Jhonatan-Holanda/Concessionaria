@@ -3,7 +3,10 @@ package DAO;
 import Modelo.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDAO extends ExecuteSQL {
     public ClienteDAO(Connection con){
@@ -29,6 +32,47 @@ public class ClienteDAO extends ExecuteSQL {
             }
         } catch (SQLException ex) {
             return ex.getMessage();
+        }
+    }
+    //Excluir
+    public List<Cliente> ListarComboCliente(){
+        String sql = "SELECT nome FROM cliente ORDER BY nome";
+        List<Cliente> lista = new ArrayList<>();
+        
+        try{
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            if(rs != null){
+            while(rs.next()){
+            Cliente a = new Cliente();
+            a.setNome(rs.getString(1));
+            lista.add(a);
+            }
+                return lista;
+            }else{
+                return null;
+            }
+
+        }catch(Exception e){
+            return null;
+        }
+       
+   }
+    public String Excluir_Cliente(Cliente a){
+            String sql = "DELETE FROM cliente WHERE nome = ?";
+        try{
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ps.setString(1,a.getNome());
+   
+            if(ps.executeUpdate() > 0){
+                return "Excluido com Sucesso";
+            }else{
+                return "Erro ao Excluir";
+            }
+            
+        }catch( SQLException e){
+            return e.getMessage();
         }
     }
 }
