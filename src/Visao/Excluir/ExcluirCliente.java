@@ -25,6 +25,9 @@ public class ExcluirCliente extends javax.swing.JFrame {
     public ExcluirCliente() {
         initComponents();
         AtualizarCombo();
+        setTitle("Concessionaria");
+        setLocationRelativeTo(this);
+        setResizable(false);
     }
 
     public void AtualizarCombo(){
@@ -165,9 +168,9 @@ public class ExcluirCliente extends javax.swing.JFrame {
         Cliente a = new Cliente();
 
         if(nome.equals("Selecione um Cliente")){
-            JOptionPane.showMessageDialog(null, "Nenhum filme selecionado","Video Locadora",JOptionPane.QUESTION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Nenhum Cliente","Concessionaria",JOptionPane.QUESTION_MESSAGE);
         }else{
-            int b = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir"+"("+nome+")","Video Locadora",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
+            int b = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir"+"("+nome+")","Concessionaria",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.QUESTION_MESSAGE);
             if(b == 0){
                 a.setNome(nome);
                 sql.Excluir_Cliente(a);

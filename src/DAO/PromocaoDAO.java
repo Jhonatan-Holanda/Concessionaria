@@ -60,5 +60,46 @@ public class PromocaoDAO extends ExecuteSQL{
     
     }
     
+    public List<Promocao> ListarComboPromocao(){
+    String sql = "SELECT veiculo FROM promocao";
+    List<Promocao> lista = new ArrayList<>();
    
+       try {
+           PreparedStatement pr = getCon().prepareStatement(sql);
+           ResultSet rs = pr.executeQuery();
+           
+           if(rs!= null){
+            while(rs.next()){
+                Promocao p = new Promocao();
+                p.setVeiculo(rs.getString(1));
+                lista.add(p);
+            }        
+            return lista;
+           }else{
+            return null;
+           }           
+       } catch (SQLException ex) {
+       return null;
+       }
+    
+    
+   
+    }
+    public String ExcluirPromocao(Promocao p){
+    String sql = "DELETE FROM promocao WHERE veiculo =?";
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ps.setString(1,p.getVeiculo());
+            if (ps.executeUpdate()>0) {
+                return "Excluido com sucesso";
+            
+            }else{
+                return "Excluido com sucesso";
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    
+    }
+    
 }
