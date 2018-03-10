@@ -102,7 +102,7 @@ public class PromocaoDAO extends ExecuteSQL{
     
     }
     
-    public List<Promocao> ListarTabela(Promocao p){
+    public List<Promocao> ListarTabela(){
     String sql = "SELECT * FROM promocao";
     List<Promocao> lista = new ArrayList<>();
         try {
@@ -111,6 +111,7 @@ public class PromocaoDAO extends ExecuteSQL{
             
             if (rs!=null) {
                 while(rs.next()){
+                  Promocao p = new Promocao();  
                   p.setCode(rs.getInt(1));
                   p.setVeiculo(rs.getString(2));
                   p.setPercentual(rs.getInt(3));

@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Visao.consultar;
 
 import DAO.Conexao;
-import DAO.PromocaoDAO;
-import Modelo.Promocao;
-import Modelo.Veiculos;
+import DAO.FuncionarioDAO;
+import Modelo.Funcionario;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +14,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rudinilly
  */
-public class ConsultarPromocao extends javax.swing.JFrame {
+public class ConsultarFuncionario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ConsultarPromocao
-     */
-    public ConsultarPromocao() {
+    public ConsultarFuncionario() {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("Concessionaria");
@@ -32,34 +24,39 @@ public class ConsultarPromocao extends javax.swing.JFrame {
         AtualizaTabela();
         AtualizaCombo();
     }
-    private void AtualizaCombo(){
+     private void AtualizaCombo(){
         Connection con = Conexao.AbrirConexao();
-        PromocaoDAO sql = new PromocaoDAO(con);
-        List<Veiculos> lista = new ArrayList<>();
-        lista =  sql.ListarComboVeiculos();
+        FuncionarioDAO sql = new FuncionarioDAO(con);
+        List<Funcionario> lista = new ArrayList<>();
+        lista =  sql.ListarComboFuncionario();
     
-        for(Veiculos v :lista){
-        jComboBox1.addItem(v.getModelo());
+        for(Funcionario v :lista){
+        jComboBox1.addItem(v.getNome());
         }
         Conexao.FecharConexao(con);
     }
-    public void AtualizaTabela(){
+  public void AtualizaTabela(){
         Connection con = Conexao.AbrirConexao();
-        PromocaoDAO sql = new PromocaoDAO(con);
-        Promocao p = new Promocao();
-        List<Promocao> lista = new ArrayList<>();
+        FuncionarioDAO sql = new FuncionarioDAO(con);
+        List<Funcionario> lista = new ArrayList<>();
         lista = sql.ListarTabela();
         DefaultTableModel tbm = (DefaultTableModel) jTable2.getModel();
         while (tbm.getRowCount() >0) {            
             tbm.removeRow(0);
         }
         int i = 0;
-        for(Promocao tab : lista){
+        for(Funcionario tab : lista){
         tbm.addRow(new String[i]);
-        jTable2.setValueAt(tab.getCode(), i, 0);
-        jTable2.setValueAt(tab.getVeiculo(), i, 1);
-        jTable2.setValueAt(tab.getPercentual(), i, 2);
-        jTable2.setValueAt(tab.getData_expiracao(), i, 3);
+          jTable2.setValueAt(tab.getCod(), i, 0);
+                jTable2.setValueAt(tab.getNome(), i, 1);
+                jTable2.setValueAt(tab.getEmail(), i, 2);
+                jTable2.setValueAt(tab.getCpf(), i, 3);
+                jTable2.setValueAt(tab.getTelefone(), i, 4);
+                jTable2.setValueAt(tab.getRg(), i, 5);
+                jTable2.setValueAt(tab.getNumeropis(), i, 6);
+                jTable2.setValueAt(tab.getLogin(), i, 7);
+                jTable2.setValueAt(tab.getSenha(), i, 8);
+                jTable2.setValueAt(tab.getPatente(), i, 9);
         i++;
         }
         Conexao.FecharConexao(con);
@@ -89,13 +86,13 @@ public class ConsultarPromocao extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Veículo", "Desconto", "Data de Expiração "
+                "Id", "Nome", "Email", "CPF", "Telefone", "RG", "NumeroPis", "Login", "Senha", "Patente"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(0, 130, 730, 270);
+        jScrollPane2.setBounds(0, 120, 900, 310);
 
         jLabel1.setText("Pesquisar por Código");
         jPanel1.add(jLabel1);
@@ -112,11 +109,11 @@ public class ConsultarPromocao extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(220, 20, 50, 30);
 
-        jLabel2.setText("Pesquisar por Veículo");
+        jLabel2.setText("Pesquisar por Nome");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(360, 20, 130, 30);
+        jLabel2.setBounds(530, 20, 130, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Veículo" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Funcionario" }));
         jComboBox1.setToolTipText("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +121,7 @@ public class ConsultarPromocao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(490, 20, 200, 30);
+        jComboBox1.setBounds(670, 20, 200, 30);
 
         jButton3.setText("Todos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -133,51 +130,21 @@ public class ConsultarPromocao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(610, 80, 80, 30);
+        jButton3.setBounds(790, 80, 80, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 890, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         jTextField1.setText("");
-        jComboBox1.setSelectedIndex(0);  
-        AtualizaTabela(); 
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        String veiculo = jComboBox1.getSelectedItem().toString();
-        Connection con = Conexao.AbrirConexao();
-        PromocaoDAO sql = new PromocaoDAO(con);
-        Promocao p = new Promocao();
-        List<Promocao> lista = new ArrayList<>();
-        lista = sql.ListarTabelaNome(veiculo);
-        DefaultTableModel tbm = (DefaultTableModel) jTable2.getModel();
-        while (tbm.getRowCount() >0) {            
-            tbm.removeRow(0);
-        }
-        int i = 0;
-        for(Promocao tab : lista){
-        tbm.addRow(new String[i]);
-        jTable2.setValueAt(tab.getCode(), i, 0);
-        jTable2.setValueAt(tab.getVeiculo(), i, 1);
-        jTable2.setValueAt(tab.getPercentual(), i, 2);
-        jTable2.setValueAt(tab.getData_expiracao(), i, 3);
-        i++;
-        }
-        Conexao.FecharConexao(con);
-    
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String cod = jTextField1.getText();
@@ -186,26 +153,67 @@ public class ConsultarPromocao extends javax.swing.JFrame {
         }else{
             int codigo = Integer.parseInt(cod);
             Connection con = Conexao.AbrirConexao();
-            PromocaoDAO sql = new PromocaoDAO(con);
-            Promocao p = new Promocao();
-            List<Promocao> lista = new ArrayList<>();
+            FuncionarioDAO sql = new FuncionarioDAO(con);
+            Funcionario p = new Funcionario();
+            List<Funcionario> lista = new ArrayList<>();
             lista = sql.ListarTabelaCodigo(codigo);
             DefaultTableModel tbm = (DefaultTableModel) jTable2.getModel();
-            while (tbm.getRowCount() >0) {            
+            while (tbm.getRowCount() >0) {
                 tbm.removeRow(0);
             }
             int i = 0;
-            for(Promocao tab : lista){
-            tbm.addRow(new String[i]);
-            jTable2.setValueAt(tab.getCode(), i, 0);
-            jTable2.setValueAt(tab.getVeiculo(), i, 1);
-            jTable2.setValueAt(tab.getPercentual(), i, 2);
-            jTable2.setValueAt(tab.getData_expiracao(), i, 3);
-            i++;
+            for(Funcionario tab : lista){
+                tbm.addRow(new String[i]);
+                jTable2.setValueAt(tab.getCod(), i, 0);
+                jTable2.setValueAt(tab.getNome(), i, 1);
+                jTable2.setValueAt(tab.getEmail(), i, 2);
+                jTable2.setValueAt(tab.getCpf(), i, 3);
+                jTable2.setValueAt(tab.getTelefone(), i, 4);
+                jTable2.setValueAt(tab.getRg(), i, 5);
+                jTable2.setValueAt(tab.getNumeropis(), i, 6);
+                jTable2.setValueAt(tab.getLogin(), i, 7);
+                jTable2.setValueAt(tab.getSenha(), i, 8);
+                jTable2.setValueAt(tab.getPatente(), i, 9);
+                i++;
             }
             Conexao.FecharConexao(con);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        String nome = jComboBox1.getSelectedItem().toString();
+        Connection con = Conexao.AbrirConexao();
+        FuncionarioDAO sql = new FuncionarioDAO(con);
+        Funcionario p = new Funcionario();
+        List<Funcionario> lista = new ArrayList<>();
+        lista = sql.ListarTabelaNome(nome);
+        DefaultTableModel tbm = (DefaultTableModel) jTable2.getModel();
+        while (tbm.getRowCount() >0) {
+            tbm.removeRow(0);
+        }
+        int i = 0;
+        for(Funcionario tab : lista){
+            tbm.addRow(new String[i]);
+            jTable2.setValueAt(tab.getCod(), i, 0);
+                jTable2.setValueAt(tab.getNome(), i, 1);
+                jTable2.setValueAt(tab.getEmail(), i, 2);
+                jTable2.setValueAt(tab.getCpf(), i, 3);
+                jTable2.setValueAt(tab.getTelefone(), i, 4);
+                jTable2.setValueAt(tab.getRg(), i, 5);
+                jTable2.setValueAt(tab.getNumeropis(), i, 6);
+                jTable2.setValueAt(tab.getLogin(), i, 7);
+                jTable2.setValueAt(tab.getSenha(), i, 8);
+                jTable2.setValueAt(tab.getPatente(), i, 9);
+            i++;
+        }
+        Conexao.FecharConexao(con);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jTextField1.setText("");
+        jComboBox1.setSelectedIndex(0);
+        AtualizaTabela();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,20 +232,20 @@ public class ConsultarPromocao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultarPromocao().setVisible(true);
+                new ConsultarFuncionario().setVisible(true);
             }
         });
     }

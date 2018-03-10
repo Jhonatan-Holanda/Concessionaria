@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Visao.consultar;
 
 import DAO.Conexao;
-import DAO.PromocaoDAO;
-import Modelo.Promocao;
-import Modelo.Veiculos;
+import DAO.FabricanteDAO;
+import Modelo.Fabricante;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,12 +13,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Rudinilly
  */
-public class ConsultarPromocao extends javax.swing.JFrame {
+public class ConsultarFabricante extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ConsultarPromocao
-     */
-    public ConsultarPromocao() {
+    public ConsultarFabricante() {
         initComponents();
         setLocationRelativeTo(this);
         setTitle("Concessionaria");
@@ -32,34 +23,32 @@ public class ConsultarPromocao extends javax.swing.JFrame {
         AtualizaTabela();
         AtualizaCombo();
     }
-    private void AtualizaCombo(){
+private void AtualizaCombo(){
         Connection con = Conexao.AbrirConexao();
-        PromocaoDAO sql = new PromocaoDAO(con);
-        List<Veiculos> lista = new ArrayList<>();
-        lista =  sql.ListarComboVeiculos();
+        FabricanteDAO sql = new FabricanteDAO(con);
+        List<Fabricante> lista = new ArrayList<>();
+        lista =  sql.ListarComboFabricante();
     
-        for(Veiculos v :lista){
-        jComboBox1.addItem(v.getModelo());
+        for(Fabricante v :lista){
+        jComboBox1.addItem(v.getNome());
         }
         Conexao.FecharConexao(con);
     }
     public void AtualizaTabela(){
         Connection con = Conexao.AbrirConexao();
-        PromocaoDAO sql = new PromocaoDAO(con);
-        Promocao p = new Promocao();
-        List<Promocao> lista = new ArrayList<>();
+        FabricanteDAO sql = new FabricanteDAO(con);
+        List<Fabricante> lista = new ArrayList<>();
         lista = sql.ListarTabela();
         DefaultTableModel tbm = (DefaultTableModel) jTable2.getModel();
         while (tbm.getRowCount() >0) {            
             tbm.removeRow(0);
         }
         int i = 0;
-        for(Promocao tab : lista){
+        for(Fabricante tab : lista){
         tbm.addRow(new String[i]);
-        jTable2.setValueAt(tab.getCode(), i, 0);
-        jTable2.setValueAt(tab.getVeiculo(), i, 1);
-        jTable2.setValueAt(tab.getPercentual(), i, 2);
-        jTable2.setValueAt(tab.getData_expiracao(), i, 3);
+        jTable2.setValueAt(tab.getCod(), i, 0);
+        jTable2.setValueAt(tab.getNome(), i, 1);
+        
         i++;
         }
         Conexao.FecharConexao(con);
@@ -71,12 +60,13 @@ public class ConsultarPromocao extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,19 +79,15 @@ public class ConsultarPromocao extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Veículo", "Desconto", "Data de Expiração "
+                "Id", "Nome"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(0, 130, 730, 270);
-
-        jLabel1.setText("Pesquisar por Código");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 20, 130, 30);
+        jScrollPane2.setBounds(0, 110, 590, 160);
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(150, 19, 50, 30);
+        jTextField1.setBounds(-20, 30, 4, 30);
 
         jButton1.setText("Ok");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -110,13 +96,13 @@ public class ConsultarPromocao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(220, 20, 50, 30);
+        jButton1.setBounds(200, 20, 47, 30);
 
-        jLabel2.setText("Pesquisar por Veículo");
+        jLabel2.setText("Pesquisar por Nome");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(360, 20, 130, 30);
+        jLabel2.setBounds(260, 20, 120, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Veículo" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Fabricante" }));
         jComboBox1.setToolTipText("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +110,7 @@ public class ConsultarPromocao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(490, 20, 200, 30);
+        jComboBox1.setBounds(380, 20, 170, 30);
 
         jButton3.setText("Todos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -133,79 +119,82 @@ public class ConsultarPromocao extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(610, 80, 80, 30);
+        jButton3.setBounds(490, 60, 64, 30);
+
+        jLabel1.setText("Pesquisar por Código");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(20, 20, 130, 30);
+        jPanel1.add(jTextField2);
+        jTextField2.setBounds(140, 20, 50, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 713, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         jTextField1.setText("");
-        jComboBox1.setSelectedIndex(0);  
-        AtualizaTabela(); 
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        String veiculo = jComboBox1.getSelectedItem().toString();
-        Connection con = Conexao.AbrirConexao();
-        PromocaoDAO sql = new PromocaoDAO(con);
-        Promocao p = new Promocao();
-        List<Promocao> lista = new ArrayList<>();
-        lista = sql.ListarTabelaNome(veiculo);
-        DefaultTableModel tbm = (DefaultTableModel) jTable2.getModel();
-        while (tbm.getRowCount() >0) {            
-            tbm.removeRow(0);
-        }
-        int i = 0;
-        for(Promocao tab : lista){
-        tbm.addRow(new String[i]);
-        jTable2.setValueAt(tab.getCode(), i, 0);
-        jTable2.setValueAt(tab.getVeiculo(), i, 1);
-        jTable2.setValueAt(tab.getPercentual(), i, 2);
-        jTable2.setValueAt(tab.getData_expiracao(), i, 3);
-        i++;
-        }
-        Conexao.FecharConexao(con);
-    
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String cod = jTextField1.getText();
+        String cod = jTextField2.getText();
         if (cod.equals("")) {
             JOptionPane.showConfirmDialog(null,"Insira um código","Concessionaria",JOptionPane.WARNING_MESSAGE);
         }else{
             int codigo = Integer.parseInt(cod);
             Connection con = Conexao.AbrirConexao();
-            PromocaoDAO sql = new PromocaoDAO(con);
-            Promocao p = new Promocao();
-            List<Promocao> lista = new ArrayList<>();
+            FabricanteDAO sql = new FabricanteDAO(con);
+            Fabricante p = new Fabricante();
+            List<Fabricante> lista = new ArrayList<>();
             lista = sql.ListarTabelaCodigo(codigo);
             DefaultTableModel tbm = (DefaultTableModel) jTable2.getModel();
-            while (tbm.getRowCount() >0) {            
+            while (tbm.getRowCount() >0) {
                 tbm.removeRow(0);
             }
             int i = 0;
-            for(Promocao tab : lista){
-            tbm.addRow(new String[i]);
-            jTable2.setValueAt(tab.getCode(), i, 0);
-            jTable2.setValueAt(tab.getVeiculo(), i, 1);
-            jTable2.setValueAt(tab.getPercentual(), i, 2);
-            jTable2.setValueAt(tab.getData_expiracao(), i, 3);
-            i++;
+            for(Fabricante tab : lista){
+                tbm.addRow(new String[i]);
+                jTable2.setValueAt(tab.getCod(), i, 0);
+                jTable2.setValueAt(tab.getNome(), i, 1);
+                
+                i++;
             }
             Conexao.FecharConexao(con);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        String nome = jComboBox1.getSelectedItem().toString();
+        Connection con = Conexao.AbrirConexao();
+        FabricanteDAO sql = new FabricanteDAO(con);
+        Fabricante p = new Fabricante();
+        List<Fabricante> lista = new ArrayList<>();
+        lista = sql.ListarTabelaNome(nome);
+        DefaultTableModel tbm = (DefaultTableModel) jTable2.getModel();
+        while (tbm.getRowCount() >0) {
+            tbm.removeRow(0);
+        }
+        int i = 0;
+        for(Fabricante tab : lista){
+            tbm.addRow(new String[i]);
+            jTable2.setValueAt(tab.getCod(), i, 0);
+            jTable2.setValueAt(tab.getNome(), i, 1);
+           
+            i++;
+        }
+        Conexao.FecharConexao(con);
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jTextField1.setText("");
+        jComboBox1.setSelectedIndex(0);
+        AtualizaTabela();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,20 +213,20 @@ public class ConsultarPromocao extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFabricante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFabricante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFabricante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConsultarPromocao.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ConsultarFabricante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultarPromocao().setVisible(true);
+                new ConsultarFabricante().setVisible(true);
             }
         });
     }
@@ -252,5 +241,6 @@ public class ConsultarPromocao extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
