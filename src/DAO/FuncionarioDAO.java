@@ -131,5 +131,101 @@ public class FuncionarioDAO extends ExecuteSQL{
         }
     
     }
+     public List<Funcionario> ListarTabela(){
+    String sql = "SELECT * FROM funcionario";
+    List<Funcionario> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Funcionario p = new Funcionario();
+                  p.setCod(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                  p.setEmail(rs.getString(3));
+                  p.setCpf(rs.getString(4));                  
+                  p.setTelefone(rs.getString(5));
+                  p.setRg(rs.getString(6));
+                  p.setNumeropis(rs.getInt(7));                  
+                  p.setLogin(rs.getString(8));
+                  p.setSenha(rs.getString(9));
+                  p.setPatente(rs.getInt(10));
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
     
+    public List<Funcionario> ListarTabelaNome(String nome){
+    String sql = "SELECT * FROM funcionario WHERE Nome='"+nome+"'";
+    List<Funcionario> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Funcionario p = new Funcionario();
+                  p.setCod(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                  p.setEmail(rs.getString(3));
+                  p.setCpf(rs.getString(4));                  
+                  p.setTelefone(rs.getString(5));
+                  p.setRg(rs.getString(6));
+                  p.setNumeropis(rs.getInt(7));                  
+                  p.setLogin(rs.getString(8));
+                  p.setSenha(rs.getString(9));
+                  p.setPatente(rs.getInt(10));
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
+    public List<Funcionario> ListarTabelaCodigo(int cod){
+    String sql = "SELECT * FROM funcionario WHERE idfuncionario='"+cod+"'";
+    List<Funcionario> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Funcionario p = new Funcionario();
+                  p.setCod(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                  p.setEmail(rs.getString(3));
+                  p.setCpf(rs.getString(4));                  
+                  p.setTelefone(rs.getString(5));
+                  p.setRg(rs.getString(6));
+                  p.setNumeropis(rs.getInt(7));                  
+                  p.setLogin(rs.getString(8));
+                  p.setSenha(rs.getString(9));
+                  p.setPatente(rs.getInt(10));
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
 }

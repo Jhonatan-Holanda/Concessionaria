@@ -89,4 +89,92 @@ public class VeiculoDAO extends ExecuteSQL{
         }
     
     }
+      public List<Veiculos> ListarTabela(){
+    String sql = "SELECT * FROM veiculos";
+    List<Veiculos> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Veiculos p = new Veiculos();
+                  p.setCod(rs.getInt(1));
+                  p.setModelo(rs.getString(2));
+                  p.setFabricante(rs.getString(3));
+                  p.setCor(rs.getString(4));                  
+                  p.setAno(rs.getInt(5));
+                  p.setPreço(rs.getString(6));
+                  p.setChassi(rs.getString(7)); 
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
+    
+    public List<Veiculos> ListarTabelaNome(String nome){
+    String sql = "SELECT * FROM veiculos WHERE modelo='"+nome+"'";
+    List<Veiculos> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Veiculos p = new Veiculos();
+                 p.setCod(rs.getInt(1));
+                  p.setModelo(rs.getString(2));
+                  p.setFabricante(rs.getString(3));
+                  p.setCor(rs.getString(4));                  
+                  p.setAno(rs.getInt(5));
+                  p.setPreço(rs.getString(6));
+                  p.setChassi(rs.getString(7)); 
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
+    public List<Veiculos> ListarTabelaCodigo(int cod){
+    String sql = "SELECT * FROM veiculos WHERE idveiculos='"+cod+"'";
+    List<Veiculos> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Veiculos p = new Veiculos();
+                 p.setCod(rs.getInt(1));
+                  p.setModelo(rs.getString(2));
+                  p.setFabricante(rs.getString(3));
+                  p.setCor(rs.getString(4));                  
+                  p.setAno(rs.getInt(5));
+                  p.setPreço(rs.getString(6));
+                  p.setChassi(rs.getString(7)); 
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
 }

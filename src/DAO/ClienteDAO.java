@@ -180,6 +180,98 @@ public class ClienteDAO extends ExecuteSQL {
         }catch( SQLException ex ){
             return null;
         }
-
+    }
+        
+    public List<Cliente> ListarTabela(){
+    String sql = "SELECT * FROM cliente";
+    List<Cliente> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Cliente p = new Cliente();
+                  p.setCode(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                  p.setEmail(rs.getString(3));
+                  p.setCidade(rs.getString(4));                  
+                  p.setEstado(rs.getString(5));
+                  p.setRG(rs.getString(6));
+                  p.setCPF(rs.getString(7));                  
+                  p.setTelefone(rs.getString(8));
+                  p.setCNH(rs.getString(9));
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
+    
+    public List<Cliente> ListarTabelaNome(String nome){
+    String sql = "SELECT * FROM cliente WHERE Nome='"+nome+"'";
+    List<Cliente> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Cliente p = new Cliente();
+                  p.setCode(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                  p.setEmail(rs.getString(3));
+                  p.setCidade(rs.getString(4));                  
+                  p.setEstado(rs.getString(5));
+                  p.setRG(rs.getString(6));
+                  p.setCPF(rs.getString(7));                  
+                  p.setTelefone(rs.getString(8));
+                  p.setCNH(rs.getString(9));
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
+    public List<Cliente> ListarTabelaCodigo(int cod){
+    String sql = "SELECT * FROM cliente WHERE idcliente='"+cod+"'";
+    List<Cliente> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Cliente p = new Cliente();
+                  p.setCode(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                  p.setEmail(rs.getString(3));
+                  p.setCidade(rs.getString(4));                  
+                  p.setEstado(rs.getString(5));
+                  p.setRG(rs.getString(6));
+                  p.setCPF(rs.getString(7));                  
+                  p.setTelefone(rs.getString(8));
+                  p.setCNH(rs.getString(9));
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

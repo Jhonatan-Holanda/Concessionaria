@@ -1,7 +1,11 @@
 package Modelo;
 
 public class Cliente {
+<<<<<<< HEAD
  private int cod;
+=======
+ private int code;
+>>>>>>> origin/master
  private String nome;
  private String email;
  private String cidade;
@@ -17,6 +21,14 @@ public class Cliente {
 
     public void setCod(int cod) {
         this.cod = cod;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public String getNome() {

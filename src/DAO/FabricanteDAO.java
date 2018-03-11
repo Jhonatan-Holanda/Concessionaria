@@ -203,4 +203,78 @@ public class FabricanteDAO extends ExecuteSQL{
             return null;
         }
     }
+    public List<Fabricante> ListarTabela(){
+    String sql = "SELECT * FROM fabricante";
+    List<Fabricante> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Fabricante p = new Fabricante();
+                  p.setCod(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
+    
+    public List<Fabricante> ListarTabelaNome(String nome){
+    String sql = "SELECT * FROM fabricante WHERE Nome='"+nome+"'";
+    List<Fabricante> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Fabricante p = new Fabricante();
+                  p.setCod(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+        
+    }
+    public List<Fabricante> ListarTabelaCodigo(int cod){
+    String sql = "SELECT * FROM fabricante WHERE idfabricante='"+cod+"'";
+    List<Fabricante> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs!=null) {
+                while(rs.next()){
+                  Fabricante p = new Fabricante();
+                  p.setCod(rs.getInt(1));
+                  p.setNome(rs.getString(2));
+                
+                  lista.add(p);
+                }
+                return lista;
+            }else{
+            return null;
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        
+    }
 }

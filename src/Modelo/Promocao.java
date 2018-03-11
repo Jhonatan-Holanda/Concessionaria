@@ -5,10 +5,19 @@ package Modelo;
  * @author Rudinilly
  */
 public class Promocao {
+    private int code;
+
     private String Veiculo;
     private String data_expiracao;
     private int percentual;
 
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
     public String getVeiculo() {
         return Veiculo;
     }
