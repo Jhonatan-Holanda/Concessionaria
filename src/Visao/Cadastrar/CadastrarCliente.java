@@ -49,6 +49,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Cadastrar Cliente");
         jPanel1.add(jLabel1);
@@ -70,12 +71,12 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jPanel2.add(jLabel3);
         jLabel3.setBounds(60, 80, 60, 30);
 
-        jLabel4.setText("CPF:");
+        jLabel4.setText("RG:");
         jPanel2.add(jLabel4);
         jLabel4.setBounds(410, 30, 50, 30);
 
         try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###-#")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -83,23 +84,23 @@ public class CadastrarCliente extends javax.swing.JFrame {
         jFormattedTextField1.setBounds(460, 30, 120, 30);
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# #### ####")));
+            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         jPanel2.add(jFormattedTextField2);
         jFormattedTextField2.setBounds(460, 80, 120, 30);
 
-        jLabel5.setText("Telefone:");
+        jLabel5.setText("CPF:");
         jPanel2.add(jLabel5);
         jLabel5.setBounds(400, 80, 60, 30);
 
-        jLabel6.setText("RG:");
+        jLabel6.setText("Telefone:");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(410, 130, 50, 30);
+        jLabel6.setBounds(400, 130, 60, 30);
 
         try {
-            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("######-#")));
+            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# ####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -199,7 +200,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String nome = jTextField1.getText().toUpperCase();
-        String email = jTextField2.getText().toUpperCase();
+        String email = jTextField2.getText();
         String cidade = jTextField3.getText().toUpperCase();
         String estado = jTextField4.getText().toUpperCase();
         String RG = jFormattedTextField1.getText();
