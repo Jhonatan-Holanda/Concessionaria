@@ -1,11 +1,8 @@
 package Modelo;
 
 public class Cliente {
-<<<<<<< HEAD
  private int cod;
-=======
  private int code;
->>>>>>> origin/master
  private String nome;
  private String email;
  private String cidade;
