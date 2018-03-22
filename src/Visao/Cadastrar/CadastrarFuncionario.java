@@ -37,13 +37,13 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -125,8 +125,6 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jTextField7.setBounds(160, 40, 200, 20);
         jPanel2.add(jTextField6);
         jTextField6.setBounds(160, 70, 200, 20);
-        jPanel2.add(jTextField4);
-        jTextField4.setBounds(160, 190, 130, 20);
         jPanel2.add(jTextField1);
         jTextField1.setBounds(160, 100, 100, 20);
 
@@ -149,6 +147,14 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jLabel8.setBounds(380, 70, 50, 20);
         jPanel2.add(jTextField2);
         jTextField2.setBounds(430, 70, 140, 20);
+
+        try {
+            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.######.##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(jFormattedTextField3);
+        jFormattedTextField3.setBounds(160, 190, 130, 20);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(0, 80, 730, 260);
@@ -185,7 +191,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         String RG = jTextField1.getText();
         String CPF = jFormattedTextField1.getText();
         String telefone = jFormattedTextField2.getText();
-        String numerodopis = jTextField4.getText();
+        String numerodopis = jFormattedTextField3.getText();
         String senha = jTextField2.getText();
         if(nome.equals("")||email.equals("")||senha.equals("")||login.equals("")||RG.equals("")||CPF.equals("")||telefone.equals("")||numerodopis.equals("")||nome.equals("")){
             JOptionPane.showMessageDialog(null,"Os campos não podem estar vazios");        
@@ -201,14 +207,14 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
              c.setRg(RG);
              c.setCpf(CPF);
              c.setTelefone(telefone);
-             c.setNumeropis(numeropis);
+             c.setNumeropis(numerodopis);
              c.setSenha(senha);
              c.setPatente(patente);
             sql.SalvarFuncionario(c);
             jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
-            jTextField4.setText("");
+            jFormattedTextField3.setText("");
             jTextField6.setText("");
             jTextField7.setText("");
             jFormattedTextField1.setText("");
@@ -228,7 +234,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
      jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
-            jTextField4.setText("");
+            jFormattedTextField3.setText("");
             jTextField6.setText("");
             jTextField7.setText("");
             jFormattedTextField1.setText("");
@@ -278,6 +284,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -292,7 +299,6 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables

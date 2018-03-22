@@ -8,7 +8,7 @@ public class Funcionario {
     private String cpf;
     private String telefone;
     private String rg;
-    private int numeropis;
+    private String numeropis;
     private String login;
     private String senha;
     private int patente;
@@ -61,11 +61,11 @@ public class Funcionario {
         this.rg = rg;
     }
 
-    public int getNumeropis() {
+    public String getNumeropis() {
         return numeropis;
     }
 
-    public void setNumeropis(int numeropis) {
+    public void setNumeropis(String numeropis) {
         this.numeropis = numeropis;
     }
 
