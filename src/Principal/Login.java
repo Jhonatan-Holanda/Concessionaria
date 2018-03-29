@@ -20,6 +20,8 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -30,6 +32,10 @@ public class Login extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jProgressBar1 = new javax.swing.JProgressBar();
+
+        jTextField2.setText("jTextField2");
+
+        jTextField3.setText("jTextField3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,7 +169,9 @@ public class Login extends javax.swing.JFrame {
                                 e.getMessage();
                             }
                         }
+                       
                         new MenuFuncionario().setVisible(true);
+                        new MenuFuncionario().GetFun(login,senha);
                         dispose();
                     }
                 }
@@ -179,7 +187,7 @@ public class Login extends javax.swing.JFrame {
                             }catch(Exception e){
                                 e.getMessage();
                             }
-                        }
+                        }                        
                         new MenuGerente().setVisible(true);
                         dispose();
                     }
@@ -242,5 +250,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

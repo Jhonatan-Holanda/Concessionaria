@@ -228,4 +228,25 @@ public class FuncionarioDAO extends ExecuteSQL{
         
         
     }
+    public List<Funcionario> PegarId(String login,String senha){
+        String sql = "SELECT idfuncionario FROM funcionario WHERE login='"+login+"' AND senha = '"+senha+"'";
+        List<Funcionario> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs!=null){
+                while(rs.next()){
+                Funcionario f = new Funcionario();
+                f.setCod(rs.getInt(1));
+                lista.add(f);
+                }
+                return lista;
+            }else{
+                return null;
+            }
+            
+        } catch (Exception e) {
+            return null;    
+        }
+    }
 }

@@ -1,11 +1,17 @@
 package Principal;
 
+import DAO.Conexao;
+import DAO.FuncionarioDAO;
+import Modelo.Funcionario;
 import Visao.Cadastrar.CadastrarCliente;
 import Visao.Excluir.ExcluirCliente;
 import Visao.consultar.ConsultarCliente;
 import Visao.consultar.ConsultarPromocao;
 import Visao.consultar.ConsultarVeiculo;
-
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Jhonatan Holanda
@@ -22,14 +28,30 @@ public class MenuFuncionario extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         setSize(680,415);
     }
+    int idf = 0;
+    public void GetFun(String login,String senha){
+        Connection con = Conexao.AbrirConexao();
+        FuncionarioDAO sql = new FuncionarioDAO(con);
+        List<Funcionario> lista = new ArrayList<>();
+        lista = sql.PegarId(login, senha);
+        idfun.setText(login);
+        for(Funcionario f : lista){
+        idf = f.getCod();
+        
+        }
+        JOptionPane.showMessageDialog(null,idfun.getText());
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToggleButton1 = new javax.swing.JToggleButton();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        idfun = new javax.swing.JTextField();
+        id = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -41,6 +63,8 @@ public class MenuFuncionario extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+
+        jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,12 +82,19 @@ public class MenuFuncionario extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(51, 204, 0));
         jButton2.setText("Vendas");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2);
         jButton2.setBounds(60, 300, 130, 40);
+        jPanel2.add(idfun);
+        idfun.setBounds(570, 40, 40, 19);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/MenuGerente.jpg"))); // NOI18N
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(0, 0, 690, 400);
+        id.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/MenuGerente.jpg"))); // NOI18N
+        jPanel2.add(id);
+        id.setBounds(0, 0, 690, 400);
 
         jMenu1.setText("Cadastrar");
 
@@ -134,7 +165,7 @@ public class MenuFuncionario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
         );
 
         pack();
@@ -163,6 +194,11 @@ public class MenuFuncionario extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
     new ConsultarVeiculo().setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        new Vendas().getid(idf);
+        new Vendas().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,9 +236,10 @@ public class MenuFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel id;
+    private javax.swing.JTextField idfun;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -215,5 +252,6 @@ public class MenuFuncionario extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

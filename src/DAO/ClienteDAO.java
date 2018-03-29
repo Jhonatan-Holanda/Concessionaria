@@ -108,7 +108,7 @@ public class ClienteDAO extends ExecuteSQL {
     }
     
     public List<Cliente> ListarTabelaNome(String nome){
-    String sql = "SELECT * FROM cliente WHERE Nome='"+nome+"'";
+    String sql = "SELECT * FROM cliente WHERE Nome LIKE '%"+nome+"%'";
     List<Cliente> lista = new ArrayList<>();
         try {
             PreparedStatement ps = getCon().prepareStatement(sql);
