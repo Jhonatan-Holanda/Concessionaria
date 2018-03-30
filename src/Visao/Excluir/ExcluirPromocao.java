@@ -17,7 +17,10 @@ public class ExcluirPromocao extends javax.swing.JFrame {
     public ExcluirPromocao() {
         initComponents();
         AtualizarCombo();
-        
+        setSize(520, 278);
+        setLocationRelativeTo(this);
+        setResizable(false);
+        setTitle("Concessionária");
     }
  public void AtualizarCombo(){
         Connection con = Conexao.AbrirConexao();
@@ -116,7 +119,7 @@ public class ExcluirPromocao extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

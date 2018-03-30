@@ -1,6 +1,7 @@
 package Modelo;
 
 public class Cliente {
+ private int cod;
  private int code;
  private String nome;
  private String email;
@@ -10,6 +11,14 @@ public class Cliente {
  private String CPF;
  private String telefone;
  private String CNH;
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
+    }
 
     public int getCode() {
         return code;
@@ -82,5 +91,7 @@ public class Cliente {
     public void setCNH(String CNH) {
         this.CNH = CNH;
     }
+    
+    
  
 }

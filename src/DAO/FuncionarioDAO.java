@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,8 +82,9 @@ public class FuncionarioDAO extends ExecuteSQL{
                 a.setLogin(rs.getString(1));
                 a.setSenha(rs.getString(2));
                 finalResult = true;
-            }
+            }            
         }
+       
     }catch(Exception e){
     }
     return finalResult;
@@ -161,9 +161,37 @@ public class FuncionarioDAO extends ExecuteSQL{
             return null;
         }
         
+  } 
+  
+   public String Alterar_Funcionario(Funcionario a){
         
+        String sql = "UPDATE funcionario SET nome = ? ,email = ?,cpf = ?, telefone = ? , rg = ? , numeropis = ? , login = ?,  senha = ? WHERE idfuncionario = ? ";
+        
+        try{
+            PreparedStatement ps = getCon().prepareStatement(sql);
+
+            ps.setString(1, a.getNome());
+            ps.setString(2,a.getEmail());
+            ps.setString(3, a.getCpf());
+            ps.setString(4, a.getTelefone());
+            ps.setString(5, a.getRg());
+            ps.setInt(6, a.getNumeropis());
+            ps.setString(7, a.getLogin());
+            ps.setString(8, a.getSenha());
+            ps.setInt(9, a.getCod());
+
+            if(ps.executeUpdate() > 0){
+                return "Atualizado com sucesso";
+            }else{
+                return "Erro ao Atualizar";
+            }
+            
+        }catch(SQLException e){
+            return e.getMessage();
+        }
     }
     
+
     public List<Funcionario> ListarTabelaNome(String nome){
     String sql = "SELECT * FROM funcionario WHERE Nome='"+nome+"'";
     List<Funcionario> lista = new ArrayList<>();
@@ -248,5 +276,86 @@ public class FuncionarioDAO extends ExecuteSQL{
         } catch (Exception e) {
             return null;    
         }
+
+    }
+    
+   public boolean Testar_Funcionario(int cod){
+        boolean Resultado = false;
+
+        try{
+            String sql  = "SELECT * FROM funcionario WHERE idfuncionario = "+cod;
+            PreparedStatement ps = getCon().prepareStatement(sql);
+            ResultSet  rs = ps.executeQuery();
+
+            if( rs!= null){
+                while(rs.next()){
+                Resultado = true;
+                }
+            }
+        }catch(SQLException ex){
+            ex.getMessage();
+        }
+            return Resultado;
+        }
+    
+        public List<Funcionario> CapturarFuncionario(int cod){
+            String sql = "SELECT * FROM funcionario WHERE idfuncionario = "+cod;
+            List<Funcionario> lista = new ArrayList<>();
+
+            try{
+                PreparedStatement ps = getCon().prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+                if( rs!= null){
+                    while(rs.next()){
+                             
+                        
+                    Funcionario a = new Funcionario();
+                    a.setNome(rs.getString(2));
+                    a.setEmail(rs.getString(3));                    
+                    a.setCpf(rs.getString(4));
+                    a.setTelefone(rs.getString(5));
+                    a.setRg(rs.getString(6));
+                    a.setNumeropis(rs.getInt(7));
+                    a.setLogin(rs.getString(8));
+                    a.setSenha(rs.getString(9));
+                    lista.add(a);
+                    }
+                return lista;
+
+                }else{
+                     return null;
+                 }
+            }catch( SQLException ex ){
+                return null;
+            }
+        }
+   
+      public List<Funcionario> ConsultaCodigoFuncionario( String nome){
+            String sql = "SELECT idfuncionario FROM funcionario WHERE nome = '"+ nome +"'";
+            List<Funcionario> lista = new ArrayList<>();
+            try{
+                PreparedStatement ps = getCon().prepareStatement(sql);
+                ResultSet rs = ps.executeQuery();
+
+                if(rs != null){
+
+                    while(rs.next()){
+                        Funcionario a = new Funcionario();
+                        a.setCod(rs.getInt(1));
+                        lista.add(a);
+                    }
+
+                    return lista;
+
+                }else{
+
+                    return null;
+
+                }
+
+            }catch( Exception ex){
+                return null;
+            }
     }
 }

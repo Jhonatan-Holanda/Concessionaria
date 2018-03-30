@@ -12,6 +12,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
     public ExcluirFuncionario() {
         initComponents();
         setLocationRelativeTo(this);
+        setSize(511, 265);
         setResizable(false);
         setTitle("Concessionaia");
         AtualizarCombo();
@@ -52,7 +53,6 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
         jLabel2.setText("EXCLUIR:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione um Funcionario" }));
-        jComboBox1.setBorder(null);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -97,6 +97,7 @@ public class ExcluirFuncionario extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Excluir Funcionario");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

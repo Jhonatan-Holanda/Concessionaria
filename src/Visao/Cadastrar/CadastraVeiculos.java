@@ -29,6 +29,9 @@ public class CadastraVeiculos extends javax.swing.JFrame {
     public CadastraVeiculos() {
         initComponents();
         AtualizarCombo();
+         setLocationRelativeTo(this);
+        setResizable(false);
+        setTitle("Concessionária");
     }
 
     public void AtualizarCombo(){
@@ -71,7 +74,7 @@ public class CadastraVeiculos extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(9, 51, 65));
         jPanel1.setLayout(null);
@@ -130,7 +133,7 @@ public class CadastraVeiculos extends javax.swing.JFrame {
         jComboBox1.setBounds(150, 80, 250, 30);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 90, 500, 330);
+        jPanel2.setBounds(0, 90, 500, 320);
 
         jButton1.setBackground(new java.awt.Color(255, 0, 0));
         jButton1.setText("Cancelar");
@@ -152,7 +155,7 @@ public class CadastraVeiculos extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(40, 440, 100, 40);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 51));
+        jButton3.setBackground(new java.awt.Color(204, 204, 0));
         jButton3.setText("Limpar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,15 +177,11 @@ public class CadastraVeiculos extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
         );
 
         pack();

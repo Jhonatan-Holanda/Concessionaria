@@ -65,9 +65,7 @@ public class Vendas extends javax.swing.JFrame {
         }
         Conexao.FecharConexao(con);
     }
-    public void getid(int id){
-    JOptionPane.showMessageDialog(null,id);
-    }
+   
     String formapagamento = "";
     String parcelas = "";
     String modopagamento = "";

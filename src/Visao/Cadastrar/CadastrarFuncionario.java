@@ -37,13 +37,13 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jFormattedTextField3 = new javax.swing.JFormattedTextField();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -52,7 +52,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jButton2.setBackground(new java.awt.Color(246, 26, 26));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton2.setText("CANCELAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -60,10 +60,10 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(410, 370, 97, 23);
+        jButton2.setBounds(540, 380, 100, 40);
 
         jButton1.setBackground(new java.awt.Color(0, 204, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("SALVAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,12 +71,13 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(130, 370, 100, 23);
+        jButton1.setBounds(130, 380, 110, 40);
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CADASTRO DE FUNCIONARIO");
+        jLabel1.setText("Cadastro de Funcionário");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 730, 80);
 
@@ -90,45 +91,43 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jPanel2.add(jFormattedTextField1);
-        jFormattedTextField1.setBounds(160, 130, 100, 20);
+        jFormattedTextField1.setBounds(160, 150, 100, 30);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel7.setText("NUMERO DO PIS:");
+        jLabel7.setText("Número do PIS:");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(40, 190, 95, 20);
+        jLabel7.setBounds(40, 230, 87, 30);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel5.setText("TELEFONE:");
+        jLabel5.setText("Telefone:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(40, 160, 62, 15);
+        jLabel5.setBounds(40, 190, 53, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("NOME COMPLETO:");
+        jLabel2.setText("Nome Competo:");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(40, 40, 103, 15);
+        jLabel2.setBounds(40, 40, 90, 15);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("CPF:");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(40, 130, 24, 15);
+        jLabel4.setBounds(40, 150, 24, 30);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel6.setText("RG:");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(40, 100, 19, 15);
+        jLabel6.setBounds(40, 110, 19, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel3.setText("EMAIL:");
+        jLabel3.setText("EmailL:");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(40, 70, 38, 15);
+        jLabel3.setBounds(40, 70, 37, 30);
         jPanel2.add(jTextField7);
-        jTextField7.setBounds(160, 40, 200, 20);
+        jTextField7.setBounds(160, 29, 200, 30);
         jPanel2.add(jTextField6);
-        jTextField6.setBounds(160, 70, 200, 20);
-        jPanel2.add(jTextField4);
-        jTextField4.setBounds(160, 190, 130, 20);
+        jTextField6.setBounds(160, 70, 200, 30);
         jPanel2.add(jTextField1);
-        jTextField1.setBounds(160, 100, 100, 20);
+        jTextField1.setBounds(160, 110, 100, 30);
 
         try {
             jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)# #### ####")));
@@ -136,25 +135,33 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         jPanel2.add(jFormattedTextField2);
-        jFormattedTextField2.setBounds(160, 160, 130, 20);
+        jFormattedTextField2.setBounds(160, 190, 130, 30);
 
         jLabel9.setText("Login:");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(380, 40, 50, 20);
+        jLabel9.setBounds(380, 30, 50, 30);
         jPanel2.add(jTextField3);
-        jTextField3.setBounds(430, 40, 140, 20);
+        jTextField3.setBounds(430, 30, 140, 30);
 
         jLabel8.setText("Senha:");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(380, 70, 50, 20);
+        jLabel8.setBounds(380, 70, 50, 30);
         jPanel2.add(jTextField2);
-        jTextField2.setBounds(430, 70, 140, 20);
+        jTextField2.setBounds(430, 70, 140, 30);
+
+        try {
+            jFormattedTextField3.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.######.##-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(jFormattedTextField3);
+        jFormattedTextField3.setBounds(160, 230, 130, 30);
 
         jPanel1.add(jPanel2);
-        jPanel2.setBounds(0, 80, 730, 260);
+        jPanel2.setBounds(0, 80, 730, 280);
 
         jButton3.setBackground(new java.awt.Color(220, 180, 19));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton3.setText("Limpar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +169,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(280, 370, 90, 25);
+        jButton3.setBounds(330, 380, 100, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +179,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
         );
 
         pack();
@@ -185,7 +192,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
         String RG = jTextField1.getText();
         String CPF = jFormattedTextField1.getText();
         String telefone = jFormattedTextField2.getText();
-        String numerodopis = jTextField4.getText();
+        String numerodopis = jFormattedTextField3.getText();
         String senha = jTextField2.getText();
         if(nome.equals("")||email.equals("")||senha.equals("")||login.equals("")||RG.equals("")||CPF.equals("")||telefone.equals("")||numerodopis.equals("")||nome.equals("")){
             JOptionPane.showMessageDialog(null,"Os campos não podem estar vazios");        
@@ -208,7 +215,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
             jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
-            jTextField4.setText("");
+            jFormattedTextField3.setText("");
             jTextField6.setText("");
             jTextField7.setText("");
             jFormattedTextField1.setText("");
@@ -228,7 +235,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
      jTextField1.setText("");
             jTextField2.setText("");
             jTextField3.setText("");
-            jTextField4.setText("");
+            jFormattedTextField3.setText("");
             jTextField6.setText("");
             jTextField7.setText("");
             jFormattedTextField1.setText("");
@@ -278,6 +285,7 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
+    private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -292,7 +300,6 @@ public class CadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables

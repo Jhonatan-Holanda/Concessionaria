@@ -25,6 +25,10 @@ public class ExcluirVeiculo extends javax.swing.JFrame {
     public ExcluirVeiculo() {
         initComponents();
         AtualizarCombo();
+        setSize(520, 275);
+        setLocationRelativeTo(this);
+        setResizable(false);
+        setTitle("Concessionária");
     }
 
     public void AtualizarCombo(){
@@ -82,7 +86,7 @@ public class ExcluirVeiculo extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,7 +100,7 @@ public class ExcluirVeiculo extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Excluir Veiculo");
+        jLabel1.setText("Excluir Veículo");
 
         jButton1.setBackground(new java.awt.Color(51, 255, 0));
         jButton1.setText("Excluir");

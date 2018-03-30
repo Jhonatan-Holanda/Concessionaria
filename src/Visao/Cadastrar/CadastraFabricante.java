@@ -23,6 +23,9 @@ public class CadastraFabricante extends javax.swing.JFrame {
      */
     public CadastraFabricante() {
         initComponents();
+         setLocationRelativeTo(this);
+        setResizable(false);
+        setTitle("Concessionária");
     }
 
     /**
@@ -43,7 +46,7 @@ public class CadastraFabricante extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(9, 51, 65));
         jPanel1.setLayout(null);
@@ -82,7 +85,7 @@ public class CadastraFabricante extends javax.swing.JFrame {
         jPanel1.add(jButton2);
         jButton2.setBounds(40, 220, 100, 40);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 51));
+        jButton3.setBackground(new java.awt.Color(204, 204, 0));
         jButton3.setText("Limpar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +99,7 @@ public class CadastraFabricante extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastrar Veiculos");
+        jLabel1.setText("Cadastrar Fabricante");
         jPanel1.add(jLabel1);
         jLabel1.setBounds(0, 0, 500, 90);
 
@@ -104,13 +107,14 @@ public class CadastraFabricante extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();

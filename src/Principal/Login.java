@@ -12,7 +12,9 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        
+        setLocationRelativeTo(this);
+        setResizable(false);
+        setTitle("Concessionária");
        
     }
     int patente = 0;
@@ -171,7 +173,6 @@ public class Login extends javax.swing.JFrame {
                         }
                        
                         new MenuFuncionario().setVisible(true);
-                        new MenuFuncionario().GetFun(login,senha);
                         dispose();
                     }
                 }

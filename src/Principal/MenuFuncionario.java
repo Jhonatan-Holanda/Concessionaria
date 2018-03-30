@@ -3,6 +3,7 @@ package Principal;
 import DAO.Conexao;
 import DAO.FuncionarioDAO;
 import Modelo.Funcionario;
+import Visao.Alterar.AlterarCliente;
 import Visao.Cadastrar.CadastrarCliente;
 import Visao.Excluir.ExcluirCliente;
 import Visao.consultar.ConsultarCliente;
@@ -28,19 +29,8 @@ public class MenuFuncionario extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         setSize(680,415);
     }
-    int idf = 0;
-    public void GetFun(String login,String senha){
-        Connection con = Conexao.AbrirConexao();
-        FuncionarioDAO sql = new FuncionarioDAO(con);
-        List<Funcionario> lista = new ArrayList<>();
-        lista = sql.PegarId(login, senha);
-        idfun.setText(login);
-        for(Funcionario f : lista){
-        idf = f.getCod();
-        
-        }
-        JOptionPane.showMessageDialog(null,idfun.getText());
-    }
+  
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -50,7 +40,6 @@ public class MenuFuncionario extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        idfun = new javax.swing.JTextField();
         id = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -89,8 +78,6 @@ public class MenuFuncionario extends javax.swing.JFrame {
         });
         jPanel2.add(jButton2);
         jButton2.setBounds(60, 300, 130, 40);
-        jPanel2.add(idfun);
-        idfun.setBounds(570, 40, 40, 19);
 
         id.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/MenuGerente.jpg"))); // NOI18N
         jPanel2.add(id);
@@ -139,6 +126,11 @@ public class MenuFuncionario extends javax.swing.JFrame {
         jMenu3.setText("Alterar");
 
         jMenuItem5.setText("Cliente");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem5);
 
         jMenuBar1.add(jMenu3);
@@ -196,9 +188,13 @@ public class MenuFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Vendas().getid(idf);
+
         new Vendas().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       new AlterarCliente().setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,7 +233,6 @@ public class MenuFuncionario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel id;
-    private javax.swing.JTextField idfun;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
